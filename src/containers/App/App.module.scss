@@ -1,0 +1,16 @@
+@import 'styles/variables.scss';
+
+.app {
+  text-align: center;
+  min-height: 100vh;
+  background-color: $color-app-background;
+  color: $color-text;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+  }
+}
