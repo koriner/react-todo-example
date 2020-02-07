@@ -4,9 +4,12 @@
 
 import produce from 'immer';
 import {
-  ADD_TASK
+  ADD_TASK,
+  COMPLETE_TASK,
+  DELETE_TASK
 } from './task-actions';
 import getTestData from './getTestData';
+import taskStatus from 'constants/taskStatus';
 
 // Define initial state for tasks module
 const INITIAL_STATE = {
@@ -29,6 +32,21 @@ export default (state = INITIAL_STATE, action) => {
           id: state.tasks.length,
           timestamp: Date.now(),
         });
+        break;
+      }
+
+      case COMPLETE_TASK: {
+        const { tasks } = draft;
+        const task = tasks.find(task => task.id === payload.task.id);
+        if (task) {
+          task.status = taskStatus.COMPLETE;
+        }
+        draft.tasks = tasks;
+        break;
+      }
+
+      case DELETE_TASK: {
+        draft.tasks = draft.tasks.filter(task => task.id !== payload.task.id);
         break;
       }
   

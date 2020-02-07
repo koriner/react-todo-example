@@ -2,7 +2,11 @@
   Task module redux actions & creators
 */
 
+import taskPriority from 'constants/taskPriority';
+
 export const ADD_TASK = 'task/add';
+export const COMPLETE_TASK = 'task/complete';
+export const DELETE_TASK = 'task/delete';
 
 /**
  * Add a new task to the list
@@ -10,8 +14,40 @@ export const ADD_TASK = 'task/add';
  * @param {Object} task
  */
 export const addTask = task => {
+  if (!task.priority) {
+    task.priority = taskPriority.LOW;
+  }
+
   return {
     type: ADD_TASK,
+    payload: {
+      task
+    }
+  }
+}
+
+/**
+ * Complete a task item
+ *
+ * @param {Object} task
+ */
+export const completeTask = task => {
+  return {
+    type: COMPLETE_TASK,
+    payload: {
+      task
+    }
+  }
+}
+
+/**
+ * Delete a task item
+ *
+ * @param {Object} task
+ */
+export const deleteTask = task => {
+  return {
+    type: DELETE_TASK,
     payload: {
       task
     }

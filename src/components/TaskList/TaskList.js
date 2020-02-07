@@ -8,7 +8,7 @@ import styles from './TaskList.module.scss';
 import TaskItem from 'components/TaskItem/TaskItem';
 
 const TaskList = props => {
-  const { tasks } = props;
+  const { tasks, onComplete, onDelete } = props;
   
   return (
     <div className={styles.taskList}>
@@ -17,6 +17,8 @@ const TaskList = props => {
           <TaskItem
             key={`task_${task.id}`}
             task={task}
+            onComplete={onComplete}
+            onDelete={onDelete}
           />
         ))
       }
@@ -26,6 +28,8 @@ const TaskList = props => {
 
 TaskList.propTypes = {
   tasks: PropTypes.array,
+  onComplete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 TaskList.defaultProps = {
