@@ -5,12 +5,16 @@
   min-height: 100vh;
   background-color: $color-app-background;
   color: $color-text;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     font-size: 2.6rem;
+  }
+
+  .main {
+    min-width: 800px;
+    max-width: 800px;
   }
 }

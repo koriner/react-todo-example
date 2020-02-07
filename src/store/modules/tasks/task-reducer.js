@@ -6,10 +6,11 @@ import produce from 'immer';
 import {
   ADD_TASK
 } from './task-actions';
+import getTestData from './getTestData';
 
 // Define initial state for tasks module
 const INITIAL_STATE = {
-  tasks: []
+  tasks: getTestData()
 }
 
 /**
@@ -22,7 +23,12 @@ export default (state = INITIAL_STATE, action) => {
     switch (type) {
 
       case ADD_TASK: {
-        //
+        const { tasks } = draft;
+        tasks.push({
+          ...payload.task,
+          id: state.tasks.length,
+          timestamp: Date.now(),
+        });
         break;
       }
   

@@ -12,7 +12,7 @@ const App = () => {
       <header className={styles.header}>
         <h1>Header</h1>
       </header>
-      <section>
+      <section className={styles.main}>
         <TodoList
         />
       </section>
