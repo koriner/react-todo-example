@@ -43,7 +43,7 @@ const TaskItem = props => {
   });
   
   return (
-    <div className={taskClass}>
+    <div className={taskClass} data-testid="TaskItem">
       <div className={styles.priority}>
         <span className={markerClass}></span>
       </div>
@@ -83,12 +83,14 @@ const TaskItem = props => {
           <div
             className={styles.actionButton}
             onClick={handleDelete}
+            data-testid="DeleteTaskButton"
           >
             <span className={styles.icon}>❌</span>
           </div>
           <div
             className={styles.actionButton}
             onClick={handleComplete}
+            data-testid="CompleteTaskButton"
           >
             <span className={styles.icon}>✔️</span>
           </div>

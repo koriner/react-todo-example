@@ -38,7 +38,6 @@ const sortTasks = (tasks, sortMode) => {
       break;
   }
 
-  console.log(`sorted ${sortMode}: `, sorted);
   return sorted;
 }
 

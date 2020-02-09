@@ -39,7 +39,7 @@ class TodoList extends React.Component {
     const { sortMode } = this.state;
 
     return (
-      <div className={styles.todoList}>
+      <div className={styles.todoList} data-testid="TodoList">
         <Toolbar
           tasks={tasks}
           sortMode={sortMode}

@@ -32,11 +32,11 @@ const Toolbar = props => {
   }, [tasks]);
   
   return (
-    <div className={styles.toolbar}>
+    <div className={styles.toolbar} data-testid="Toolbar">
       <div className={styles.toolbarLeft}>
-        <p className={styles.numTasksText}>
-          <span>Complete: {counts.complete}</span>
-          <span>Incomplete: {counts.incomplete}</span>
+        <p className={styles.numTasksText} data-testid="Toolbar_TaskCount">
+          <span data-testid="Toolbar_TaskCount_Complete">Complete: {counts.complete}</span>
+          <span data-testid="Toolbar_TaskCount_Incomplete">Incomplete: {counts.incomplete}</span>
         </p>
       </div>
       <div className={styles.toolbarRight}>

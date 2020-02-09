@@ -44,7 +44,7 @@ const AddTask = props => {
   }
 
   return (
-    <div className={styles.addTask}>
+    <div className={styles.addTask} data-testid="AddTask">
       <input
         type="text"
         value={text}
