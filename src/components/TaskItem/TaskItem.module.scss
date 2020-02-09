@@ -5,16 +5,22 @@
   width: 100%;
   min-height: 8rem;
   border-radius: 0.7rem;
-  border: 1px solid red;
+  border: 1px solid $color-task-card-border;
+  background-color: $color-task-card-bg;
   display: flex;
   flex-direction: row;
-  // justify-content: space-between;
+  margin: $task-margin;
 
   .text {
     flex: 1;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    max-width: 71%;
+
+    p {
+      text-align: left;
+    }
   }
 
   .actions {
@@ -80,7 +86,7 @@
   height: 3.25rem;
   border-radius: 50%;
   background: white;
-  margin: 0.8rem;
+  margin: 0.5rem;
   cursor: pointer;
   user-select: none;
 
@@ -138,6 +144,10 @@
 
 .taskComplete {
   opacity: 0.3;
+
+  .buttonPriority {
+    display: none !important;
+  }
 
   .text > p {
     text-decoration: line-through;

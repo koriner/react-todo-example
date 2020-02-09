@@ -45,7 +45,9 @@ export default (state = INITIAL_STATE, action) => {
         const { tasks } = draft;
         const task = tasks.find(task => task.id === payload.task.id);
         if (task) {
-          task.status = taskStatus.COMPLETE;
+          task.status = task.status === taskStatus.COMPLETE ?
+          taskStatus.INCOMPLETE :
+          taskStatus.COMPLETE;
         }
         draft.tasks = tasks;
         break;

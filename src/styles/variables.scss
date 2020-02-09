@@ -1,9 +1,15 @@
 // Variables
 
 $color-text: #f1f1f1;
-$color-app-background: #121212;
+$color-app-background: #212121;
+$color-task-card-bg: #3f3f3f;
+$color-task-card-border: #4f4f4f;
 
 $color-priority-high: #d73d30;
 $color-priority-med: #d7931e;
 $color-priority-low: #227fb9;
 $color-priority-complete: #22a054;
+
+// Spacing
+$block-margin: 2rem 0 2rem 0;
+$task-margin: 1rem 0 1rem 0;

@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div className={styles.app}>
       <header className={styles.header}>
-        <h1>Header</h1>
+        <h1 className={styles.title}>Todo List</h1>
       </header>
       <section className={styles.main}>
         <TodoList

@@ -1,8 +1,11 @@
+@import 'styles/variables.scss';
+
 .addTask {
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: $block-margin;
   
   .textInput {
     width: 100%;

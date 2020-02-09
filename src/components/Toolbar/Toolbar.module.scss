@@ -1,8 +1,11 @@
+@import 'styles/variables.scss';
+
 .toolbar {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin: $block-margin;
 
   .toolbarLeft {
     .numTasksText {

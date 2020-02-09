@@ -20,7 +20,11 @@ const sortTasks = (tasks, sortMode) => {
 
   switch (sortMode) {
     case sortModes.NAME:
-      sorted = sortBy(tasks, 'text');
+      sorted = sortBy(
+        tasks,
+        [task => task.text.toLowerCase()],
+        'text'
+      );
       break;
     
     case sortModes.PRIORITY:
@@ -34,6 +38,7 @@ const sortTasks = (tasks, sortMode) => {
       break;
   }
 
+  console.log(`sorted ${sortMode}: `, sorted);
   return sorted;
 }
 
