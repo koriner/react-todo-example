@@ -8,6 +8,7 @@ export const ADD_TASK = 'task/add';
 export const COMPLETE_TASK = 'task/complete';
 export const DELETE_TASK = 'task/delete';
 export const SET_PRIORITY = 'task/set_priority';
+export const CLEAR_COMPLETED = 'task/clear_completed';
 
 /**
  * Add a new task to the list
@@ -68,6 +69,16 @@ export const setTaskPriority = (task, priority) => {
       task,
       priority
     }
+  }
+}
+
+/**
+ * Clears completed tasks
+ */
+export const clearCompletedTasks = () => {
+  return {
+    type: CLEAR_COMPLETED,
+    payload: {}
   }
 }
 

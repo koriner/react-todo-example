@@ -24,7 +24,7 @@ const countTaskTypes = tasks => {
 
 // Toolbar component
 const Toolbar = props => {
-  const { tasks, sortMode, onSetSortMode } = props;
+  const { tasks, sortMode, onSetSortMode, onClearCompleted } = props;
 
   // Get the number of tasks by status
   const counts = useMemo(() => {
@@ -46,7 +46,7 @@ const Toolbar = props => {
           <option value="name">Name</option>
           <option value="priority">Priority</option>
         </select>
-        <button onClick={props.onClearCompleted}>
+        <button onClick={onClearCompleted}>
           Clear Completed
         </button>
       </div>
@@ -57,6 +57,7 @@ const Toolbar = props => {
 Toolbar.propTypes = {
   sortMode: PropTypes.string.isRequired,
   onSetSortMode: PropTypes.func.isRequired,
+  onClearCompleted: PropTypes.func.isRequired,
 }
 
 export default Toolbar;

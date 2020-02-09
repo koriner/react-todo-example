@@ -7,7 +7,8 @@ import {
   ADD_TASK,
   COMPLETE_TASK,
   DELETE_TASK,
-  SET_PRIORITY
+  SET_PRIORITY,
+  CLEAR_COMPLETED
 } from './task-actions';
 import getTestData from './getTestData';
 import taskStatus from 'constants/taskStatus';
@@ -64,7 +65,12 @@ export default (state = INITIAL_STATE, action) => {
         draft.tasks = tasks;
         break;
       }
-  
+      
+      case CLEAR_COMPLETED: {
+        draft.tasks = draft.tasks.filter(task => task.status !== taskStatus.COMPLETE);
+        break;
+      }
+
       default:
         break;
     }
