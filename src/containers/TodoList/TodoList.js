@@ -14,18 +14,39 @@ import {
   completeTask,
   deleteTask
 } from 'store/modules/tasks/task-actions';
+import Toolbar from 'components/Toolbar/Toolbar';
 import AddTask from 'components/AddTask/AddTask';
 import TaskList from 'components/TaskList/TaskList';
+import sortMode from 'constants/sortMode';
 
 class TodoList extends React.Component {
+  // Set default sort mode 
+  state = {
+    sortMode: sortMode.TIME
+  };
+
+  /**
+   * Sets the sort mode
+   */
+  handleSetSortMode = sortMode => {
+    this.setState({ sortMode });
+  }
+
   render() {
     const { tasks, addTask, completeTask, deleteTask } = this.props;
+    const { sortMode } = this.state;
 
     return (
       <div className={styles.todoList}>
+        <Toolbar
+          tasks={tasks}
+          sortMode={sortMode}
+          onSetSortMode={this.handleSetSortMode}
+        />
         <AddTask onAddTask={addTask} />
         <TaskList
           tasks={tasks}
+          sortMode={sortMode}
           onComplete={completeTask}
           onDelete={deleteTask}
         />

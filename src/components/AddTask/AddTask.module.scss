@@ -1,5 +1,8 @@
 .addTask {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   
   .textInput {
     width: 100%;
@@ -8,5 +11,13 @@
     vertical-align: middle;
     padding-left: 1rem;
     padding-right: 1rem;
+    border-radius: 0.6rem;
+  }
+
+  .addButton {
+    width: 7rem;
+    margin-left: 2rem;
+    border-radius: 0.6rem;
+    background-color: skyblue;
   }
 }

@@ -3,7 +3,6 @@
 */
 
 import taskStatus from 'constants/taskStatus';
-import { getPriorityByIndex } from 'constants/taskPriority';
 import uuid from 'uuid';
 
 const NUM_ITEMS = 3;
@@ -20,7 +19,7 @@ export default () => {
       timestamp: Date.now() - (i * 1000),
       text: `Task ${i + 1}`,
       status: taskStatus.INCOMPLETE,
-      priority: getPriorityByIndex(rand)
+      priority: rand
     });
   }
 

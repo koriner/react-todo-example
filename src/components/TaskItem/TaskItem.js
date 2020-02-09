@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import styles from './TaskItem.module.scss';
 import classnames from 'classnames';
 import taskStatus from 'constants/taskStatus';
+import taskPriority from 'constants/taskPriority';
+import classNames from 'classnames';
 
 const TaskItem = props => {
   const { task, onComplete, onDelete } = props;
@@ -26,13 +28,23 @@ const TaskItem = props => {
   }
 
   const taskClass = classnames(styles.taskItem, {
-    [styles.taskComplete]: task.status == taskStatus.COMPLETE
+    [styles.taskComplete]: task.status === taskStatus.COMPLETE
+  });
+
+  const markerClass = classnames(styles.priorityMarker, {
+    [styles[`priority_${task.priority}`]]: task.status === taskStatus.INCOMPLETE,
+    [styles[`priority_complete`]]: task.status === taskStatus.COMPLETE, 
   });
   
   return (
     <div className={taskClass}>
-      <p>{task.text}</p>
-      <p>{task.priority}</p>
+      <div className={styles.priority}>
+        <span className={markerClass}></span>
+      </div>
+
+      <div className={styles.text}>
+        <p>{task.text}</p>
+      </div>
 
       <div className={styles.actions}>
         <div className={styles.buttons}>

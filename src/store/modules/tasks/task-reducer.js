@@ -10,6 +10,7 @@ import {
 } from './task-actions';
 import getTestData from './getTestData';
 import taskStatus from 'constants/taskStatus';
+import taskPriority from 'constants/taskPriority';
 import uuid from 'uuid';
 
 // Define initial state for tasks module
@@ -31,6 +32,8 @@ export default (state = INITIAL_STATE, action) => {
         tasks.push({
           ...payload.task,
           id: uuid.v4(),
+          priority: taskPriority.LOW,
+          status: taskStatus.INCOMPLETE,
           timestamp: Date.now(),
         });
         break;

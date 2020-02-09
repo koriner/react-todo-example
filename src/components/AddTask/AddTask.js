@@ -53,6 +53,12 @@ const AddTask = props => {
         onChange={handleChange}
         onKeyPress={handleKeyPress}
       />
+      <button
+        className={styles.addButton}
+        onClick={saveTask}
+      >
+        Add
+      </button>
     </div>
   );
 };

@@ -1,9 +1,52 @@
+@import 'styles/variables.scss';
+
 .taskItem {
   position: relative;
   width: 100%;
-  min-height: 6rem;
-  border-radius: 8px;
+  min-height: 8rem;
+  border-radius: 0.7rem;
   border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-between;
+
+  .priority {
+    flex: 1;
+    max-width: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .priorityMarker {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    position: absolute;
+
+    &.priority_0 {
+      background-color: $color-priority-low;
+    }
+
+    &.priority_1 {
+      background-color: $color-priority-med;
+    }
+
+    &.priority_2 {
+      background-color: $color-priority-high;
+    }
+
+    &.priority_complete {
+      background-color: $color-priority-complete;
+    }
+  }
+
+  .text {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
   .actions {
     display: none;
@@ -29,8 +72,8 @@
 
         .button {
           position: relative;
-          width: 4rem;
-          height: 4rem;
+          width: 3.25rem;
+          height: 3.25rem;
           border-radius: 50%;
           background: white;
           margin: 0.8rem;
@@ -39,9 +82,8 @@
 
           .icon {
             position: absolute;
-            left: 13px;
-            top: 12px;
-            color: red;
+            left: 0.9rem;
+            top: 0.9rem;
           }
         }
       }
@@ -50,5 +92,9 @@
 }
 
 .taskComplete {
-  opacity: 0.2;
+  opacity: 0.3;
+
+  .text > p {
+    text-decoration: line-through;
+  }
 }

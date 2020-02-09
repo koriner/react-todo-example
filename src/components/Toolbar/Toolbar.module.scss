@@ -1,0 +1,22 @@
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .toolbarLeft {
+    .numTasksText {
+      span {
+        padding-right: 2rem;
+      }
+    }
+  }
+
+  .toolbarRight {
+    text-align: right;
+
+    button {
+      margin-left: 2rem;
+    }
+  }
+}
