@@ -10,6 +10,7 @@ import {
 } from './task-actions';
 import getTestData from './getTestData';
 import taskStatus from 'constants/taskStatus';
+import uuid from 'uuid';
 
 // Define initial state for tasks module
 const INITIAL_STATE = {
@@ -29,7 +30,7 @@ export default (state = INITIAL_STATE, action) => {
         const { tasks } = draft;
         tasks.push({
           ...payload.task,
-          id: state.tasks.length,
+          id: uuid.v4(),
           timestamp: Date.now(),
         });
         break;
