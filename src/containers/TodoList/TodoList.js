@@ -12,7 +12,8 @@ import styles from './TodoList.module.scss';
 import {
   addTask,
   completeTask,
-  deleteTask
+  deleteTask,
+  setTaskPriority
 } from 'store/modules/tasks/task-actions';
 import Toolbar from 'components/Toolbar/Toolbar';
 import AddTask from 'components/AddTask/AddTask';
@@ -33,7 +34,7 @@ class TodoList extends React.Component {
   }
 
   render() {
-    const { tasks, addTask, completeTask, deleteTask } = this.props;
+    const { tasks, addTask, completeTask, deleteTask, setTaskPriority } = this.props;
     const { sortMode } = this.state;
 
     return (
@@ -49,6 +50,7 @@ class TodoList extends React.Component {
           sortMode={sortMode}
           onComplete={completeTask}
           onDelete={deleteTask}
+          onSetPriority={setTaskPriority}
         />
       </div>
     );
@@ -64,7 +66,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   addTask,
   completeTask,
-  deleteTask
+  deleteTask,
+  setTaskPriority
 };
 
 export default connect(

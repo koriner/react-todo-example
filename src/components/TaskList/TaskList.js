@@ -38,7 +38,7 @@ const sortTasks = (tasks, sortMode) => {
 }
 
 const TaskList = props => {
-  const { tasks, sortMode, onComplete, onDelete } = props;
+  const { tasks, sortMode, onComplete, onDelete, onSetPriority } = props;
 
   // Get sorted tasks when things change
   const sortedTasks = useMemo(() => {
@@ -54,6 +54,7 @@ const TaskList = props => {
             task={task}
             onComplete={onComplete}
             onDelete={onDelete}
+            onSetPriority={onSetPriority}
           />
         ))
       }
@@ -66,6 +67,7 @@ TaskList.propTypes = {
   sortMode: PropTypes.string.isRequired,
   onComplete: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onSetPriority: PropTypes.func.isRequired,
 };
 
 TaskList.defaultProps = {

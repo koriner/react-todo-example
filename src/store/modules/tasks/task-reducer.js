@@ -6,7 +6,8 @@ import produce from 'immer';
 import {
   ADD_TASK,
   COMPLETE_TASK,
-  DELETE_TASK
+  DELETE_TASK,
+  SET_PRIORITY
 } from './task-actions';
 import getTestData from './getTestData';
 import taskStatus from 'constants/taskStatus';
@@ -51,6 +52,16 @@ export default (state = INITIAL_STATE, action) => {
 
       case DELETE_TASK: {
         draft.tasks = draft.tasks.filter(task => task.id !== payload.task.id);
+        break;
+      }
+
+      case SET_PRIORITY: {
+        const { tasks } = draft;
+        const task = tasks.find(task => task.id === payload.task.id);
+        if (task) {
+          task.priority = payload.priority;
+        }
+        draft.tasks = tasks;
         break;
       }
   

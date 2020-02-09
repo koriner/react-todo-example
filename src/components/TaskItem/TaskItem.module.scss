@@ -10,37 +10,6 @@
   flex-direction: row;
   // justify-content: space-between;
 
-  .priority {
-    flex: 1;
-    max-width: 7rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .priorityMarker {
-    width: 1.6rem;
-    height: 1.6rem;
-    border-radius: 50%;
-    position: absolute;
-
-    &.priority_0 {
-      background-color: $color-priority-low;
-    }
-
-    &.priority_1 {
-      background-color: $color-priority-med;
-    }
-
-    &.priority_2 {
-      background-color: $color-priority-high;
-    }
-
-    &.priority_complete {
-      background-color: $color-priority-complete;
-    }
-  }
-
   .text {
     flex: 1;
     display: flex;
@@ -69,26 +38,102 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-
-        .button {
-          position: relative;
-          width: 3.25rem;
-          height: 3.25rem;
-          border-radius: 50%;
-          background: white;
-          margin: 0.8rem;
-          cursor: pointer;
-          user-select: none;
-
-          .icon {
-            position: absolute;
-            left: 0.9rem;
-            top: 0.9rem;
-          }
-        }
       }
     }
   }
+}
+
+.priority {
+  flex: 1;
+  max-width: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.priorityMarker {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  position: absolute;
+
+  &.priority_0 {
+    background-color: $color-priority-low;
+  }
+
+  &.priority_1 {
+    background-color: $color-priority-med;
+  }
+
+  &.priority_2 {
+    background-color: $color-priority-high;
+  }
+
+  &.priority_complete {
+    background-color: $color-priority-complete;
+  }
+}
+
+.actionButton {
+  position: relative;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: white;
+  margin: 0.8rem;
+  cursor: pointer;
+  user-select: none;
+
+  .icon {
+    position: absolute;
+    left: 0.9rem;
+    top: 0.9rem;
+  }
+}
+
+.buttonPriority {
+  composes: actionButton;
+
+  .editPriority {
+    display: none;
+  }
+
+  .editPrioritySpacer {
+    display: none;
+  }
+
+  &:hover {
+    .editPriority {
+      display: block;
+      height: 5rem;
+      width: 12rem;
+      background: $color-app-background;
+      border: 1px solid white;
+      border-radius: 0.5rem;
+      transform: translate3d(calc(-6rem + 1.625rem), -6rem, 0);
+      padding-top: 1rem;
+    }
+
+    // The transparent spacer exists so that the hover state remains active
+    // when the user tries to hover over the priority edit buttons
+    .editPrioritySpacer {
+      display: block;
+      height: 1rem;
+      width: 12rem;
+      background-color: transparent;
+      transform: translate3d(calc(-6rem + 1.625rem), -6rem, 0);
+    }
+  }
+}
+
+.editPriorityMarker {
+  composes: priorityMarker;
+  position: relative;
+  display: inline-block;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-left: .3rem;
+  margin-right: .3rem;
 }
 
 .taskComplete {

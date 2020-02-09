@@ -8,10 +8,9 @@ import styles from './TaskItem.module.scss';
 import classnames from 'classnames';
 import taskStatus from 'constants/taskStatus';
 import taskPriority from 'constants/taskPriority';
-import classNames from 'classnames';
 
 const TaskItem = props => {
-  const { task, onComplete, onDelete } = props;
+  const { task, onComplete, onDelete, onSetPriority } = props;
 
   /**
    * Handle clicking the complete button
@@ -25,6 +24,13 @@ const TaskItem = props => {
    */
   const handleDelete = () => {
     onDelete(task);
+  }
+
+  /**
+   * Handle changing task priority
+   */
+  const handleSetPriority = priority => {
+    onSetPriority(task, priority);
   }
 
   const taskClass = classnames(styles.taskItem, {
@@ -49,13 +55,39 @@ const TaskItem = props => {
       <div className={styles.actions}>
         <div className={styles.buttons}>
           <div
-            className={styles.button}
+            className={styles.buttonPriority}
+          >
+            <span className={styles.icon}>
+              <span className={markerClass}></span>
+            </span>
+            <span className={styles.editPriority}>
+              {
+                Object.keys(taskPriority).map(k => {
+                const priority = taskPriority[k];
+                const editMarkerClass = classnames(styles.editPriorityMarker, {
+                  [styles[`priority_${priority}`]]: true
+                });
+                return (
+                  <span
+                    key={`priority_${k}`}
+                    className={editMarkerClass}
+                    onClick={() => handleSetPriority(priority)}
+                  >
+                </span>
+                )
+              })
+              }
+            </span>
+            <span className={styles.editPrioritySpacer}></span>
+          </div>
+          <div
+            className={styles.actionButton}
             onClick={handleDelete}
           >
             <span className={styles.icon}>❌</span>
           </div>
           <div
-            className={styles.button}
+            className={styles.actionButton}
             onClick={handleComplete}
           >
             <span className={styles.icon}>✔️</span>
@@ -70,6 +102,7 @@ TaskItem.propTypes = {
   task: PropTypes.object.isRequired,
   onComplete: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onSetPriority: PropTypes.func.isRequired,
 };
 
 export default TaskItem;
