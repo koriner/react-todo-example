@@ -41,12 +41,16 @@ const Toolbar = props => {
       </div>
       <div className={styles.toolbarRight}>
         <span>Sort by: </span>
-        <select value={sortMode} onChange={(e) => onSetSortMode(e.target.value)}>
+        <select
+          value={sortMode}
+          onChange={(e) => onSetSortMode(e.target.value)}
+          data-testid="SortSelect"
+        >
           <option value="time">Time</option>
           <option value="name">Name</option>
           <option value="priority">Priority</option>
         </select>
-        <button onClick={onClearCompleted}>
+        <button onClick={onClearCompleted} data-testid="ClearCompletedButton">
           Clear Completed
         </button>
       </div>

@@ -34,7 +34,7 @@ export default (state = INITIAL_STATE, action) => {
         tasks.push({
           ...payload.task,
           id: uuid.v4(),
-          priority: taskPriority.LOW,
+          priority: payload.task.priority || taskPriority.LOW,
           status: taskStatus.INCOMPLETE,
           timestamp: Date.now(),
         });

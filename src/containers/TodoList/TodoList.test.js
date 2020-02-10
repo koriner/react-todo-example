@@ -1,9 +1,11 @@
 import React from 'react';
 import { renderWithRedux } from 'test-helpers/index';
+import { fireEvent } from '@testing-library/react';
 import App from 'containers/App/App';
 import {
   addTask,
-  deleteTask
+  deleteTask,
+  completeTask
 } from 'store/modules/tasks/task-actions';
 
 test('renders the todolist component', () => {
@@ -33,5 +35,25 @@ test('add and remove tasks updates list correctly', () => {
   ))
   taskItems = getAllByTestId(/TaskItem/i);
   expect (taskItems.length).toBe(3);
-  
-})
+});
+
+
+test('clear completed function works correctly', () => {
+  const { store, getAllByTestId, getByTestId } = renderWithRedux(<App />);
+
+  // first list length should be 3
+  let taskItems = getAllByTestId(/TaskItem/i);
+  expect (taskItems.length).toBe(3);
+
+  // complete a task
+  store.dispatch(completeTask(
+    store.getState().tasks.tasks[0]
+  ));
+
+  // click the clear button
+  fireEvent.click(getByTestId(/ClearCompletedButton/i));
+
+  // check number of tasks
+  taskItems = getAllByTestId(/TaskItem/i);
+  expect (taskItems.length).toBe(2);
+});
